@@ -1,0 +1,18 @@
+int fact(int n){
+    int temp;
+    if(n == 1)
+        return n;
+    else{
+        int ret;
+        ret = (n*fact(n-1));
+        return ret;
+    }
+}
+
+int main()
+{
+    int times = 10;
+    int result;
+    result = fact(times);
+    return 0;
+}

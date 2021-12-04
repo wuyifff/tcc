@@ -53,6 +53,12 @@ private slots:
 
     void on_actiontokenize_triggered();
 
+    void on_actiontoken_table_triggered();
+
+    void on_actiontoken_table_2_triggered();
+
+    void on_actionobjcode_triggered();
+
 private:
     Ui::MainWindow *ui;
     QTabWidget *tab;
@@ -65,5 +71,6 @@ private:
     QString current_date;           //时间字符串
     QStatusBar *stbar;  //状态栏
     QLabel *lab;        //标签
+    QDialog *p;
 };
 #endif // MAINWINDOW_H

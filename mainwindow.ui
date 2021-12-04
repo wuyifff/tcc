@@ -31,7 +31,7 @@
    </property>
    <widget class="QMenu" name="menufile">
     <property name="title">
-     <string>file</string>
+     <string>文件</string>
     </property>
     <addaction name="actionopen"/>
     <addaction name="actionsave"/>
@@ -39,12 +39,20 @@
    </widget>
    <widget class="QMenu" name="menutokenize">
     <property name="title">
-     <string>compile</string>
+     <string>编译</string>
     </property>
     <addaction name="actiontokenize"/>
    </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>查看</string>
+    </property>
+    <addaction name="actiontoken_table"/>
+    <addaction name="actionobjcode"/>
+   </widget>
    <addaction name="menufile"/>
    <addaction name="menutokenize"/>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionopen">
@@ -64,7 +72,27 @@
   </action>
   <action name="actiontokenize">
    <property name="text">
-    <string>tokenize</string>
+    <string>complie</string>
+   </property>
+  </action>
+  <action name="actiontoken_table">
+   <property name="text">
+    <string>syntax</string>
+   </property>
+  </action>
+  <action name="actiontoken_table_2">
+   <property name="text">
+    <string>token table</string>
+   </property>
+  </action>
+  <action name="actionobject_code">
+   <property name="text">
+    <string>object code</string>
+   </property>
+  </action>
+  <action name="actionobjcode">
+   <property name="text">
+    <string>objcode</string>
    </property>
   </action>
  </widget>

@@ -136,15 +136,15 @@ void tokenize(string code)
             }
             if (Is_exited)
             {
-                cout << "variable " << s << endl;
                 continue;
             }
             struct identifier id;
             id.token = Var;
             id.name = s;
             symbol_table.push_back(id);
-            //输出
             cout << "variable " << s << endl;
+            //输出
+            continue;
         }
         //解析等号
         else if (*i == '=')
@@ -171,10 +171,8 @@ void tokenize(string code)
                 val = 10 * val + *i - '0';
                 i++;
             }
-            struct identifier id;
-            id.token = Num;
-            id.value = val;
-            symbol_table.push_back(id);
+            cout << "识别数字 " << val << endl;
+            continue;
         }
         //解析字符串
         else if (*i == '"')
@@ -302,17 +300,22 @@ void tokenize(string code)
             i++;
             continue;
         }
-        cout << "token is: " << token << " : " << tk_type[token - 128] << " in line " << line << endl;
+        cout << "token  " << token << " : " << tk_type[token - 128] << " in line " << line << endl;
     }
     cout << "下面输出变量表" << endl;
-    for (auto i = symbol_table.begin(); i != symbol_table.end(); i++)
-    {
-        int var = Var;
-        if (i->token == var)
-        {
-            cout << "variable name " << i->name << endl;
-        }
-    }
+//    for (auto i = symbol_table.begin(); i != symbol_table.end(); i++)
+//    {
+//        int var = Var;
+//        if (i->token == var)
+//        {
+//            cout << "variable name " << i->name << endl;
+//        }
+//    }
+//    for (auto i = symbol_table.begin(); i != symbol_table.end(); i++)
+//    {
+//        cout <<"token " << tk_type[i->token - 128] << " variable name " << i->name << " class " <<i->Class << " value " << i->value << endl;
+
+//    }
     qDebug() << symbol_table.size() << "代码共有" << line << "行";
     return;
 }

@@ -1,0 +1,131 @@
+ 函数定义：(10)
+   类型： int
+   函数名：fact
+   函数形参：
+      类型：int, 参数名：n
+   复合语句：(10)
+      复合语句的变量定义部分：
+         局部变量定义：(2)
+            类型： int
+            变量名：
+                   temp
+      复合语句的语句部分：
+         条件语句(IF_THEN_ELSE)：(9)
+            条件：
+               ==
+                  ID： n
+                  INT：1
+            IF子句：(9)
+               返回语句：(4)
+                  ID： n
+            ELSE子句：(9)
+               复合语句：(9)
+                  复合语句的变量定义部分：
+                     局部变量定义：(6)
+                        类型： int
+                        变量名：
+                               ret
+                  复合语句的语句部分：
+                     表达式语句：(7)
+                        ASSIGNOP
+                           ID： ret
+                           STAR
+                              ID： n
+                              函数调用：(7)
+                                 函数名：fact
+                                 第1个实际参数表达式：
+                                    MINUS
+                                       ID： n
+                                       INT：1
+
+                     返回语句：(8)
+                        ID： ret
+ 函数定义：(18)
+   类型： int
+   函数名：main
+      无参函数
+   复合语句：(18)
+      复合语句的变量定义部分：
+         局部变量定义：(14)
+            类型： int
+            变量名：
+                   times ASSIGNOP
+                         INT：10
+         局部变量定义：(15)
+            类型： int
+            变量名：
+                   result
+      复合语句的语句部分：
+         表达式语句：(16)
+            ASSIGNOP
+               ID： result
+               函数调用：(16)
+                  函数名：fact
+                  第1个实际参数表达式：
+                     ID： times
+
+         返回语句：(17)
+            INT：0
+在4行,  返回值类型不匹配
+在8行,  返回值类型不匹配
+变量名 别 名 层 号  类  型 标记 偏移量
+  read             0     int    F      4
+ write             0     int    F      4
+     x             1     int    P     12
+  fact     v1      0     int    F      0
+     n     v2      1     int    P     12
+  temp     v3      1     int    V     16
+        temp1      1     int    T     20
+   ret     v4      2     int    V     20
+        temp2      2     int    T     24
+        temp3      2     int    T     28
+        temp4      2     int    T     32
+        temp5      2     int    T     36
+变量名 别 名 层 号  类  型 标记 偏移量
+  read             0     int    F      4
+ write             0     int    F      4
+     x             1     int    P     12
+  fact     v1      0     int    F      0
+     n     v2      1     int    P     12
+  temp     v3      1     int    V     16
+        temp1      1     int    T     20
+变量名 别 名 层 号  类  型 标记 偏移量
+  read             0     int    F      4
+ write             0     int    F      4
+     x             1     int    P     12
+  fact     v1      0     int    F     40
+     n     v2      1     int    P     12
+  main     v5      0     int    F      0
+ times     v6      1     int    V     12
+        temp6      1     int    T     16
+result     v7      1     int    V     20
+        temp7      1     int    T     24
+        temp8      1     int    T     24
+
+FUNCTION fact :
+  PARAM v2
+  temp1 := #1
+  IF v2 == temp1 GOTO label2
+  GOTO label3
+LABEL label2 :
+  RETURN v2
+  GOTO label1
+LABEL label3 :
+  temp2 := #1
+  temp3 := v2 - temp2
+  ARG temp3
+  temp4 := CALL fact
+  temp5 := v2 * temp4
+  v4 := temp5
+  RETURN v4
+LABEL label1 :
+
+FUNCTION main :
+  temp6 := #10
+  v6 := temp6
+  ARG v6
+  temp7 := CALL fact
+  v7 := temp7
+  temp8 := #0
+  RETURN temp8
+LABEL label5 :

@@ -1,7 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "ccompiler.cpp"
-
+#include <iostream>
+#include <QProcess>
+#include "dialog.h"
+static bool is_compiled = false;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -95,7 +97,57 @@ void MainWindow::on_actiontokenize_triggered()
        QMessageBox::warning(NULL, "warning", "please save first", QMessageBox::Yes, QMessageBox::Yes);
        return;
     }
-    QString p_text = text->toPlainText();
-    tokenize(p_text.toStdString());
+    QProcess p(0);
+    p.start("cmd");
+    p.waitForStarted();
+    p.write("cd D:/test_code/Qt/tcc\n");
+    p.write(" D:/test_code/Qt/tcc/compiler.exe ");
+    p.write(file_name.toLatin1());
+    p.write("> temp.txt\n");
+    p.closeWriteChannel();
+    p.waitForFinished();
+    is_compiled = true;
+    QMessageBox::information(NULL, "提醒", "编译完成,请查看结果！", QMessageBox::Yes, QMessageBox::Yes);
+//    qDebug()<<QString::fromLocal8Bit(p.readAllStandardOutput());
+}
+
+
+void MainWindow::on_actiontoken_table_triggered()
+{
+    QString fileName = "D:/test_code/Qt/tcc/temp.txt"; //获取路径
+    QFile *file = new QFile;
+    file->setFileName(fileName);
+    bool ok = file->open(QIODevice::ReadOnly);
+    Dialog a;
+    a.show();
+    if(ok)
+    {
+        while(!file->atEnd()) {
+            QByteArray line = file->readLine();
+            QString str(line);
+            qDebug()<< str;
+//            QTextStream in(file);
+            a.set(file);
+        }
+        file->close();
+        delete file;
+    }
+}
+
+
+
+
+void MainWindow::on_actionobjcode_triggered()
+{
+    QString fileName = "D:/test_code/Qt/tcc/object.s"; //获取路径
+    QFile *file = new QFile;
+    file->setFileName(fileName);
+    bool ok = file->open(QIODevice::ReadOnly);
+    Dialog a;
+    a.show();
+    if(ok)
+        a.set(file);
+    file->close();
+    delete file;
 }
 
